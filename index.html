@@ -1,27 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>&lt;model-viewer&gt; template</title>
-    <meta charset="utf-8">
-    <meta name="description" content="&lt;model-viewer&gt; template">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A-Frame WebXR Test</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
+    <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.2.0/dist/aframe-extras.min.js"></script>
+
   </head>
   <body>
-    <!-- <model-viewer> HTML element -->
-    <model-viewer src="240120_SpeakingGuy.glb" ar ar-modes="webxr scene-viewer quick-look" camera-controls tone-mapping="commerce" poster="poster.webp" shadow-intensity="1" autoplay>
-      <div class="progress-bar hide" slot="progress-bar">
-          <div class="update-bar"></div>
-      </div>
-      <button slot="ar-button" id="ar-button">
-          View in your space
+    <!--     Overlay HTML -->
+    <div id="overlay" class="!p-0 z-10">
+      <button
+        id="creditBtn"
+        class="bg-slate-100 bg-opacity-20 rounded-lg m-2 p-2"
+      >
+        Credits
       </button>
-      <div id="ar-prompt">
-          <img src="ar_hand_prompt.png">
+      <ul
+        id="credits"
+        style="visibility: hidden"
+        class="p-3 pl-6 bg-slate-100 bg-opacity-50 rounded-lg m-2 p-2 list-disc"
+      >
+        <li>
+          "Elephant" (https://skfb.ly/D9qS) by Jakub Badin is licensed under
+          Creative Commons Attribution
+          (http://creativecommons.org/licenses/by/4.0/). <br />
+        </li>
+        <li>
+          <a
+            href="https://www.freepik.com/free-vector/isolated-tree-white-background_4382376.htm#query=tree&position=3&from_view=search&track=sph&uuid=a173ac4f-2c13-4eff-be33-071846853017"
+            >Image by brgfx</a
+          >
+          on Freepik
+        </li>
+        <li>
+          <a
+            href="https://www.freepik.com/free-vector/design-groups-rocks-stones-boulders_3792126.htm#query=stone&position=3&from_view=search&track=sph&uuid=9705a0d7-a8cb-45c1-8f26-7f94c42acc51"
+            >Image by macrovector</a
+          >
+          on Freepik
+        </li>
+      </ul>
+      <div class="fixed bottom-5 flex algin-center w-full justify-center">
+        <div
+          id="ui"
+          class="flex flex-col gap-2 bg-slate-100 bg-opacity-20 rounded-lg p-4"
+        >
+          <h1 id="uiHeader" class="col-span-2 text-center">
+            Starte die Interaktion wenn du bereit bist.
+          </h1>
+          <button id="uiBtn1" class="bg-slate-500 rounded-lg p-2">Start</button>
+          <button
+            style="display: none"
+            class="bg-slate-500 rounded-lg p-2"
+            id="uiBtn2"
+            class=""
+          >
+            Zeige mir einen Elefanten
+          </button>
+          <button
+            style="display: none"
+            class="bg-slate-500 rounded-lg p-2"
+            id="uiBtn3"
+            class=""
+          >
+            Zeige mir einen Elefanten
+          </button>
+        </div>
       </div>
-    </model-viewer>  
-    <script src="script.js"></script>
-    <!-- Loads <model-viewer> for browsers: -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.2.0/model-viewer.min.js"></script>
+    </div>
+    <!--     A-Frame Scene -->
+    <a-scene
+      xr-mode-ui="XRMode: ar;"
+      webxr="optionalFeatures:  dom-overlay; overlayElement: #overlay;"
+    >
+      <!-- ar-hit-test="target: #myobject;" -->
+      <a-assets>
+      </a-assets>
+      <a-entity hide-on-enter-ar environment="preset: forest"></a-entity>
+      <a-camera position="0 1.2 0"></a-camera>
+
+      <a-gltf-model
+        id="CharacterEntity"
+        visible="true"
+        src="#3Delephant"
+        gltf-model="src\240120_SpeakingGuy.glb"
+        position="0 0 -2"
+        scale="1.051 1.051 1.051"
+        rotation="0 32.286 0"
+        animation-mixer="clip: idle"
+      ></a-gltf-model>
+
+      <a-sound id="characterSound" position="0 0 -2" src="src\SpeakingGuy.mp3" autoplay="false"></a-sound>
+
+    </a-scene>
   </body>
+  <script src="app.js">    
+  </script>
+
 </html>

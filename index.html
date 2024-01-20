@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A-Frame WebXR Test</title>
+    <title>AR Charakter Demo</title>
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-transparent-video-shader@1.0.6/dist/aframe-transparent-video-shader.umd.js"></script>
     <script src="https://unpkg.com/aframe-chromakey-material/dist/aframe-chromakey-material.min.js"></script>
@@ -20,31 +20,16 @@
       >
         Credits
       </button>
-      <ul
-        id="credits"
-        style="visibility: hidden"
-        class="p-3 pl-6 bg-slate-100 bg-opacity-50 rounded-lg m-2 p-2 list-disc"
-      >
-        <li>
-          "Elephant" (https://skfb.ly/D9qS) by Jakub Badin is licensed under
-          Creative Commons Attribution
-          (http://creativecommons.org/licenses/by/4.0/). <br />
-        </li>
-        <li>
-          <a
-            href="https://www.freepik.com/free-vector/isolated-tree-white-background_4382376.htm#query=tree&position=3&from_view=search&track=sph&uuid=a173ac4f-2c13-4eff-be33-071846853017"
-            >Image by brgfx</a
-          >
-          on Freepik
-        </li>
-        <li>
-          <a
-            href="https://www.freepik.com/free-vector/design-groups-rocks-stones-boulders_3792126.htm#query=stone&position=3&from_view=search&track=sph&uuid=9705a0d7-a8cb-45c1-8f26-7f94c42acc51"
-            >Image by macrovector</a
-          >
-          on Freepik
-        </li>
-      </ul>
+        <ul
+          id="credits"
+          style="visibility: hidden"
+          class="p-3 pl-6 bg-slate-100 bg-opacity-50 rounded-lg m-2 p-2 list-disc"
+        >
+          <li class="">
+            lukaio - 3D by Lukas Schaab
+          </li>
+
+        </ul>
       <div class="fixed bottom-5 flex algin-center w-full justify-center">
         <div
           id="ui"
@@ -91,8 +76,8 @@
         gltf-model="src\240120_SpeakingGuy.glb"
         position="0 0 -2"
         scale="1.051 1.051 1.051"
-        rotation="0 32.286 0"
-        animation-mixer="clip: idle"
+        rotation="0 0 0"
+        animation-mixer="clip: idle; loop: once"
       ></a-gltf-model>
 
       <a-sound id="characterSound" position="0 0 -2" src="src\SpeakingGuy.mp3" autoplay="false"></a-sound>
